@@ -5,6 +5,12 @@ Queue is a FIFO data structure. Meaning, the element that was added first will b
 If elt1 is added to queue[0], elt2 will be added to queue[0] and elt1 will move to queue[1]
 Lower the index, newer the element. And the oldest element will be dequeued first.
 
+Queue order:
+
+	____________________________________________________
+rear -> ->  new     old     older     oldest   -> -> front
+	____________________________________________________
+
 Essential queue operations are:
 1. Check to see if the queue is empty - isEmpty()
 2. Add an element to the queue - enqueue()
