@@ -7,7 +7,7 @@ If elt1 is added to stack[0], elt2 will be added to stack[1]
 Higher the index, newer the element. And the newest element will be popped first.
 
 Essential stack operations are:
-1. Check to see if the stack is empty
+1. Check to see if the stack is empty - isEmpty()
 2. Add an element to the stack - push()
 3. Return the top most element of the stack - top()
 4. Remove an element from the stack - pop()
