@@ -6,6 +6,13 @@ The elements are added in a sequential fashion.
 If elt1 is added to stack[0], elt2 will be added to stack[1]
 Higher the index, newer the element. And the newest element will be popped first.
 
+Stack order
+
+| new   -> top
+| old
+| older
+v oldest
+
 Essential stack operations are:
 1. Check to see if the stack is empty - isEmpty()
 2. Add an element to the stack - push()
