@@ -26,3 +26,17 @@ for line in file_obj:
 
 file_obj.close()
 
+"""
+python list_to_file.py 
+
+ Printing the contents of the file 
+
+[1, 2, 3, 4, 5]
+
+["string 1", "string 2", "string 3", 4, "staahhpp!!"]
+
+-------------------------------------------------------
+cat filename.txt
+[1, 2, 3, 4, 5]
+["string 1", "string 2", "string 3", 4, "staahhpp!!"]
+"""
