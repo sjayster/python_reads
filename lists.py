@@ -158,16 +158,16 @@ class List(object):
 		while current:
 			if current.getData() == data:
 				found = True
-				if previous == None:
+				if not previous:
 					self.head = current.getNext()
-					current = self.head
 					
 				else:
 					previous.setNext(current.getNext())
-					current = current.getNext()
+
 			else:
 				previous = current
-				current = current.getNext()
+
+			current = current.getNext()
 
 		return found
 
@@ -179,6 +179,21 @@ class List(object):
 			current = current.getNext()
 
 		return result
+
+	def reverse(self):
+		self.print_list()
+		current = self.head
+		previous = None
+		
+		while current:
+			after = current.getNext()
+			current.setNext(previous)
+			previous = current
+			current = after
+			
+		self.head = previous
+		return self.head
+
 
 mylist = List()
 print "Is the list empty? ", mylist.isEmpty()
@@ -199,6 +214,10 @@ print "Has 54 been deleted? ",mylist.delete(54)
 print "The list now has ", mylist.size(), " elements"
 print "The elements are ", mylist.print_list()
 print "Is the list empty? ", mylist.isEmpty()
+
+mylist.reverse()
+print "Reversed list is", mylist.print_list()
+
 
 """
 Sample Output:
