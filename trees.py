@@ -89,6 +89,7 @@ class BinaryTree(object):
             temp.left = self.left
             self.left = temp
 
+
 ### Traversal ###
 
 
