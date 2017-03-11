@@ -11,7 +11,7 @@ Key functions:
 
 isempty(): return self.tree == None
 
-getroot(): Return self.root
+getRoot(): Return self.root
 setroot(newval): Set the value of root.
 self.root = newval
 
@@ -19,8 +19,8 @@ getleftchild(): return self.left
 getrightchild(): return self.right
 
 Print left and right child value
-getleftchild().getroot(): return self.left.root
-getrightchild().getroot(): return self.right.root
+getleftchild().getRoot(): return self.left.root
+getrightchild().getRoot(): return self.right.root
 
 Insertleft(value)
 if tree's left is not none, create self.left = Tree(value)
@@ -50,6 +50,14 @@ If tree is not None:
     print tree.root
     recursive_call(tree.left)
     recursive_call(tree.right)
+
+2. Level order traversal
+
+We make use of two arrays (queue) to store the current node and the result.
+   a. In the runningqueue, we append the root node
+   b. While runningqueue is not empty, we pop the queue and add the element to the result array
+   c. We add the children of the popped element (if any) to the running queue
+   d. Once the loop breaks, return the result
 
 """
 
@@ -116,10 +124,36 @@ def postorder(tree):
         postorder(tree.getLeftChild())
         print tree.getRoot()
 
+
+def levelorder(tree):
+    runningqueue = []  # appends the node and its children
+    result = []  # pops the node at every level and stores the result
+
+    # Base condition
+    if not tree:
+        return
+    runningqueue.append(tree)
+    # While the queue is not empty, pop the element and add its value to the result array
+    # Append the children of the node (if exists) to the queue
+    while runningqueue:
+        temp = runningqueue.pop(0)
+        result.append(temp.getRoot())
+        if temp.getLeftChild() is not None:
+            runningqueue.append(temp.getLeftChild())
+        if temp.getRightChild() is not None:
+            runningqueue.append(temp.getRightChild())
+
+    return result
+
+
 myTree = BinaryTree("R")
 myTree.insertLeft("L1")
 myTree.insertRight("R2")
 myTree.insertRight("R1")
+myTree.insertLeft("L2")
+myTree.insertLeft("L3")
+
+
 print "\nPreorder traversal\n"
 preorder(myTree)
 print "\nInorder traversal\n"
@@ -132,13 +166,15 @@ print "\nNew Root value is \n", myTree.getRoot()
 print "\nLeft child is \n", myTree.getLeftChild().getRoot()
 print "\nRight child is \n", myTree.getRightChild().getRoot()
 
-
+print "Level order traversal of my tree is \n", levelorder(myTree)
 """
 Sample output:
 
 Preorder traversal
 
 R
+L3
+L2
 L1
 R1
 R2
@@ -146,6 +182,8 @@ R2
 Inorder traversal
 
 L1
+L2
+L3
 R
 R1
 R2
@@ -155,6 +193,8 @@ Postorder traversal
 R2
 R1
 L1
+L2
+L3
 R
 
 Root value is 
@@ -164,8 +204,11 @@ New Root value is
 newR
 
 Left child is 
-L1
+L3
 
 Right child is 
 R1
+Level order traversal of my tree is 
+['newR', 'L3', 'R1', 'L2', 'R2', 'L1']
+
 """
