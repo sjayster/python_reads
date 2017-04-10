@@ -146,6 +146,43 @@ def levelorder(tree):
     return result
 
 
+def inorderTraversal(root):
+    """
+    :type root: TreeNode
+    :rtype: List[int]
+    """
+    stack = []
+    result = []
+    current = root
+    while stack or current:
+        if current:
+            stack.append(current)
+            current = current.getLeftChild()
+        else:
+            current = stack.pop()
+            result.append(current.getRoot())
+            current = current.getRightChild()
+    return result
+
+
+def preorderTraversal(root):
+    """
+    :type root: TreeNode
+    :rtype: List[int]
+    """
+    stack = []
+    result = []
+    current = root
+    while stack or current:
+        if current:
+            stack.append(current)
+            result.append(current.getRoot())
+            current = current.getLeftChild()
+        else:
+            current = stack.pop()
+            current = current.getRightChild()
+    return result
+
 myTree = BinaryTree("R")
 myTree.insertLeft("L1")
 myTree.insertRight("R2")
@@ -167,8 +204,11 @@ print "\nLeft child is \n", myTree.getLeftChild().getRoot()
 print "\nRight child is \n", myTree.getRightChild().getRoot()
 
 print "Level order traversal of my tree is \n", levelorder(myTree)
+print "Preorder traversal using a stack (non-recursive)"
+print preorderTraversal(myTree)
 """
 Sample output:
+
 
 Preorder traversal
 
@@ -210,5 +250,7 @@ Right child is
 R1
 Level order traversal of my tree is 
 ['newR', 'L3', 'R1', 'L2', 'R2', 'L1']
+Preorder traversal using a stack (non-recursive)
+['newR', 'L3', 'L2', 'L1', 'R1', 'R2']
 
 """
