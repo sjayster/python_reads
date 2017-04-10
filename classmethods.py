@@ -107,4 +107,5 @@ Printing new_emp_2 details
 Steve.Smith@email.com
 30000
 Steve Smith
+Is the given day a weekday?  True
 """
