@@ -1,0 +1,87 @@
+Design a REST API service that handles requests and returns evaluation grades and statuses:
+You can choose any programming language or web framework.
+
+Evaluation data is provided in the attached evaluations.json file.
+
+You can assume your web app copies the evaluations.json file to the web server and uses it directly (no database is needed
+because you have all the data in the json file and it's read-only access).
+
+Implement the following endpoints:
+
+1) http://localhost:8080/api/evaluations
+Returns all evaluations listed in evaluations.json.
+
+2) http://localhost:8080/api/evaluations?product_group=:product_group_name
+Returns the evaluations for that product_group
+
+Example request:
+http://localhost:8080/api/evaluations?product_group=API
+
+Returns:
+```
+[{u'grade': 1,
+  u'product': u'api_endpoints',
+  u'product_group': u'API',
+  u'status': u'self_assessment'},
+{u'grade': 5,
+  u'product': u'api_user_auth',
+  u'product_group': u'API',
+  u'status': u'not_started'},
+{u'grade': 2,
+  u'product': u'api_data_service',
+  u'product_group': u'API',
+  u'status': u'pending_approval'},
+{u'grade': 3,
+  u'product': u'api_key_service',
+  u'product_group': u'API',
+  u'status': u'complete'}]
+```
+
+3) http://localhost:8080/api/stats?metrics=grade,status&group_by=product_group
+Returns the calculated overall grade and overall status for each product group.
+
+Calculations are done in the following way:
+- The overall grade for a product_group is the *lowest* grade among all products in the product_group.
+  Possible grades are: [1, 2, 3, 4, 5]
+  1 is the lowest grade
+
+- The overall status for a product_group is the *lowest* status among all products in the product_group.
+  The statuses in the order of lower -> high are:
+  [“not_started”, “self_assessment”, “pending_approval”, “complete”]
+  Example calculation:
+   A product_group has 4 products with the following statues:
+    "prod1": ‘not_started”,
+    "prod2": “pending_approval”,
+    "prod3": "pending_approval",
+    "prod4":  “complete"
+   The overall status for this product_group should be “not_started”.
+
+Example Requests:
+
+# metrics could be comma-separated property names
+http://localhost:8080/api/stats?metrics=grade,status&group_by=product_group
+[
+  {“product_group”: “API”,
+   “status”: “not_started”,
+   “grade”: 1,
+  },
+  {“product_group”: “Data Platform”,
+   “status”: “….”,
+   "grade": ...,
+   …
+  },
+  …
+]
+
+# Or a single metric string
+http://localhost:8080/api/stats?metrics=status&group_by=product_group
+[
+  {“product_group”: “API”,
+   “status”: “not_started”,
+  },
+  {“product_group”: “Data Platform”,
+   “status”: “….”,
+   …
+  },
+  …
+]
