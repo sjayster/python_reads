@@ -1,0 +1,92 @@
+[
+    {
+        "grade": 4,
+        "status": "pending_approval",
+        "product": "data_warehouse",
+        "product_group": "Data Platform"
+    },
+    {
+        "grade": 4,
+        "status": "complete",
+        "product": "fx_analytics",
+        "product_group": "Finance and Billing"
+    },
+    {
+        "grade": 2,
+        "status": "self_assessment",
+        "product": "data_pipeline",
+        "product_group": "Data Platform"
+    },
+    {
+        "grade": 1,
+        "status": "self_assessment",
+        "product": "api_endpoints",
+        "product_group": "API"
+    },
+    {
+        "grade": 2,
+        "status": "complete",
+        "product": "task_scheduler",
+        "product_group": "TaskRouter"
+    },
+    {
+        "grade": 3,
+        "status": "pending_approval",
+        "product": "data_tx",
+        "product_group": "Data Platform"
+    },
+    {
+        "grade": 5,
+        "status": "not_started",
+        "product": "api_user_auth",
+        "product_group": "API"
+    },
+    {
+        "status": "pending_approval",
+        "grade": 2,
+        "product": "api_data_service",
+        "product_group": "API"
+    },
+    {
+        "grade": 5,
+        "status": "complete",
+        "product": "fx_usage",
+        "product_group": "Finance and Billing"
+    },
+    {
+        "grade": 4,
+        "status": "complete",
+        "product": "fx_fraud",
+        "product_group": "Finance and Billing"
+    },
+    {
+        "grade": 4,
+        "status": "complete",
+        "product": "fx_transactions",
+        "product_group": "Finance and Billing"
+    },
+    {
+        "grade": 3,
+        "status": "not_started",
+        "product": "task_router",
+        "product_group": "TaskRouter"
+    },
+    {
+        "grade": 5,
+        "status": "complete",
+        "product": "fx_billing",
+        "product_group": "Finance and Billing"
+    },
+    {
+        "grade": 2,
+        "status": "self_assessment",
+        "product": "data_elasticsearch",
+        "product_group": "Data Platform"
+    },
+    {
+        "grade": 3,
+        "status": "complete",
+        "product": "api_key_service",
+        "product_group": "API"
+    }
+]
